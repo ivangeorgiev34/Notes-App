@@ -22,8 +22,14 @@ namespace NotesApp.Controllers
             this.userService = _userService;
         }
 
+        /// <summary>
+        /// logs in a existing user
+        /// </summary>
+        /// <param name="userLogin"></param>
+        /// <returns></returns>
+
         [HttpPost]
-        [Route("/login")]
+        [Route("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
         {
@@ -40,11 +46,22 @@ namespace NotesApp.Controllers
 
         }
 
+        /// <summary>
+        /// registers a user if he doesn't exist
+        /// </summary>
+        /// <param name="userRegister"></param>
+        /// <returns></returns>
+
         [HttpPost]
-        [Route("/register")]
+        [Route("register")]
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] UserRegister userRegister)
         {
+            if (await userService.UserExistsByEmailAsync(userRegister.Email))
+            {
+                return BadRequest("User with this email already exists");
+            }
+
             var hashedPassword = HashPassword(userRegister.Password);
 
             await userService.RegisterUserAsync(userRegister.Email, userRegister.Username, hashedPassword);
@@ -52,6 +69,11 @@ namespace NotesApp.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// method that hashes passwords
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
         private string HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())
