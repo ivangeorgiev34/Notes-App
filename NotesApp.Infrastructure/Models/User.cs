@@ -16,6 +16,7 @@ namespace NotesApp.Infrastructure.Models
         }
 
         [Required]
+        [Key]
         public Guid Id { get; set; }
 
         [Required]
@@ -29,6 +30,6 @@ namespace NotesApp.Infrastructure.Models
         [Required]
         public string Password { get; set; }=null!;
 
-        public ICollection<Note> Notes;
+        public ICollection<Note> Notes { get; set; }
     }
 }
