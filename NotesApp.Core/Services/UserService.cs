@@ -19,6 +19,26 @@ namespace NotesApp.Core.Services
             this.repository = _repository;
         }
 
+        /// <summary>
+        /// gets user by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<User?> GetUserByIdAsync(Guid id)
+        {
+            return await repository.All<User>()
+                .Include(u=>u.Notes)
+                .FirstOrDefaultAsync(u => u.Id == id);
+        }
+
+        /// <summary>
+        /// registers a non-existing user in the database
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+
         public async Task RegisterUserAsync(string email, string username, string password)
         {
             var user = new User
@@ -33,6 +53,28 @@ namespace NotesApp.Core.Services
 
            await repository.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// checks if there is a user in the database with the given email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+
+        public async Task<bool> UserExistsByEmailAsync(string email)
+        {
+            if(await repository.All<User>().AnyAsync(u=>u.Email == email))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// checks if a given user matches the given credentials
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
 
         public async Task<User?> UserMatchesCredentialsAsync(string email, string password)
         {
