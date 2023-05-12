@@ -9,8 +9,12 @@ namespace NotesApp.Core.Contracts
 {
     public interface IUserService
     {
-        Task<User> UserMatchesCredentialsAsync(string email, string password);
+        Task<User?> UserMatchesCredentialsAsync(string email, string password);
 
         Task RegisterUserAsync(string email, string username, string password);
+
+        Task<bool> UserExistsByEmailAsync(string email );
+
+        Task<User?> GetUserByIdAsync(Guid id);
     }
 }
