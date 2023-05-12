@@ -17,14 +17,7 @@ namespace NotesApp.Extensions
         {
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<IUserService, UserService>();
-            //services.AddScoped<IStudentService, StudentService>();
-            //services.AddScoped<IClassService, ClassService>();
-            //services.AddScoped<ISubjectService, SubjectService>();
-            //services.AddScoped<ITeacherService, TeacherService>();
-            //services.AddScoped<IProfileService, ProfileService>();
-            //services.AddScoped<IGradeService, GradeService>();
-            //services.AddScoped<IRemarkService, RemarkService>();
-            //services.AddScoped<IComplimentService, ComplimentService>();
+            services.AddScoped<INoteService, NoteService>();
 
             return services;
         }
