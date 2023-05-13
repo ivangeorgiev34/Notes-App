@@ -47,6 +47,16 @@ namespace NotesApp
                     };
                 });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("LocalServer", policy =>
+                {
+                    policy.WithOrigins("http://127.0.0.1:5500")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -58,10 +68,13 @@ namespace NotesApp
 
             app.UseHttpsRedirection();
 
+
+
             app.UseAuthentication();
 
             app.UseAuthorization();
 
+            app.UseCors("LocalServer");
 
             app.MapControllers();
 
