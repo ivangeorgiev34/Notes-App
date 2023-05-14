@@ -15,6 +15,8 @@ namespace NotesApp.Core.Contracts
 
         Task<bool> UserExistsByEmailAsync(string email );
 
+        Task<bool> UserExistsByUsernameAsync(string username);
+
         Task<User?> GetUserByIdAsync(Guid id);
     }
 }
