@@ -70,6 +70,21 @@ namespace NotesApp.Core.Services
         }
 
         /// <summary>
+        /// checks if user exists by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<bool> UserExistsByUsernameAsync(string username)
+        {
+            if (await repository.All<User>().AnyAsync(u => u.Username == username))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// checks if a given user matches the given credentials
         /// </summary>
         /// <param name="email"></param>
