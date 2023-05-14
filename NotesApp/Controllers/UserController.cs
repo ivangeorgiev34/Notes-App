@@ -39,7 +39,7 @@ namespace NotesApp.Controllers
 
             if (loggedInUser == null)
             {
-                return NotFound("Wrong email or password");
+                return Unauthorized(new {Message = "Wrong email or password" });
             }
 
             return Ok(loggedInUser);
@@ -59,7 +59,7 @@ namespace NotesApp.Controllers
         {
             if (await userService.UserExistsByEmailAsync(userRegister.Email))
             {
-                return BadRequest("User with this email already exists");
+                return BadRequest(new {Message= "User with this email already exists" });
             }
 
             var hashedPassword = HashPassword(userRegister.Password);
