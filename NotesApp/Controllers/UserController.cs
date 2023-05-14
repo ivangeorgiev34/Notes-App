@@ -62,11 +62,16 @@ namespace NotesApp.Controllers
                 return BadRequest(new {Message= "User with this email already exists" });
             }
 
+            if (await userService.UserExistsByUsernameAsync(userRegister.Username))
+            {
+                return BadRequest(new { Message = "User with this username already exists" });
+            }
+
             var hashedPassword = HashPassword(userRegister.Password);
 
             await userService.RegisterUserAsync(userRegister.Email, userRegister.Username, hashedPassword);
 
-            return Ok();
+            return Ok(new {Username = userRegister.Username});
         }
 
         /// <summary>
