@@ -96,6 +96,8 @@ function mainFunction() {
 
             } else if (jsonResponse.hasOwnProperty("message")) {
 
+                errorsContainer.innerHTML = null;
+
                 let span = document.createElement("span");
 
                 span.textContent = jsonResponse["message"];
