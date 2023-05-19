@@ -51,7 +51,7 @@ namespace NotesApp
             {
                 options.AddPolicy("LocalServer", policy =>
                 {
-                    policy.WithOrigins("http://127.0.0.1:5500")
+                    policy.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader();
                 });
