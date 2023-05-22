@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <title>NotesApp</title>
+  </head>
+  <body>
+    <header>
+      <nav class="header-navigation">
+        <div class="header-heading">
+          <h1>NotesApp</h1>
+          <span>Simple application to track your own notes</span>
+        </div>
+        <ul class="authentication-links">
+          <li class="authentication-link">
+            <a href="login.html">Login</a>
+          </li>
+          <li class="authentication-link">
+            <a href="register.html">Register</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="not-logged-in-section">
+        <h1 class="main-section-heading">
+          Hello and welcome to the NotesApp application!
+        </h1>
+        <h3>
+          In order to see your notes in the application, you can log in to your
+          account by <a href="login.html">clicking here</a>!
+        </h3>
+        <h4>
+          Or if you you don't have an account on our application you can create
+          one by <a href="register.html">clicking here</a>!
+        </h4>
+      </section>
+      <section class="logged-in-section hidden"></section>
+    </main>
+    <script src="js/index.js"></script>
+  </body>
+</html>
