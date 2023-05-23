@@ -82,6 +82,10 @@
     font-size: 20px;
 }
 
+.note-container:hover{
+background-color: rgb(240, 240, 240);
+}
+
 .notes-section{ 
     display: flex;
     flex-direction: row;
