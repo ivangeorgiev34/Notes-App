@@ -61,6 +61,10 @@
     text-decoration: none;
 }
 
+.logged-in-section{
+    padding: 50px;
+}
+
 .hidden{
     display: none;
 }
@@ -106,7 +110,6 @@ border-right:1px solid rgb(81, 81, 81);
 
 main{
     min-height: 100%;
-    padding-bottom: 50px;
 }
 
 .sidebar-form{
@@ -153,4 +156,24 @@ main{
     flex-direction: row;
     column-gap: 10px;
     justify-content: space-evenly;
+}
+
+footer{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(92, 149, 255);
+    border-top: 1px solid rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > p{
+margin: 0;
+color: white;
+}
+
+html,
+body{
+    height: 100vh;
 }
