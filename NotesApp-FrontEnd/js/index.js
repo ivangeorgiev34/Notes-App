@@ -128,6 +128,12 @@ function mainFunction() {
 
 
 
+            let deleteMethod = {
+                method: "DELETE"
+            };
+
+            // let deleteMethodResponse = await deleteMethodResponse.fetch(`${BASE_URL}/${sessionStorage.getItem("userId")}/${}`)
+
         } catch (error) {
 
             console.error(error);
@@ -250,6 +256,7 @@ function mainFunction() {
 
                 let noteContainer = document.createElement("div");
                 noteContainer.classList.add("note-container");
+                noteContainer.setAttribute("data-id", currentNote.id);
 
                 let titleHeading = document.createElement("h2");
                 titleHeading.textContent = title;
