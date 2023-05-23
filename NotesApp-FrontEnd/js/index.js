@@ -148,7 +148,29 @@ function mainFunction() {
 
         try {
 
+            let titleInput = event.target.parentElement.parentElement.querySelector(".title-container > #title");
+            let descriptionInput = event.target.parentElement.parentElement.querySelector(".description-container > #description");
 
+            let note = {
+                title: titleInput.value,
+                description: descriptionInput.value
+            };
+
+            let patchMethod = {
+                method: "PATCH",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(note)
+            };
+
+            let patchMethodResponse = await fetch(`${BASE_URL}/edit/${sessionStorage.getItem("userId")}/${sessionStorage.getItem("currentNoteId")}`, patchMethod);
+
+            let responseJson = await patchMethodResponse.json();
+
+            removeSideBar();
+
+            loadAllUserTasks();
 
         } catch (error) {
 
