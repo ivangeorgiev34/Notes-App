@@ -126,13 +126,29 @@ function mainFunction() {
 
         try {
 
-
-
             let deleteMethod = {
                 method: "DELETE"
             };
 
-            // let deleteMethodResponse = await deleteMethodResponse.fetch(`${BASE_URL}/${sessionStorage.getItem("userId")}/${}`)
+            let deleteMethodResponse = await fetch(`${BASE_URL}/delete/${sessionStorage.getItem("userId")}/${sessionStorage.getItem("currentNoteId")}`, deleteMethod);
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
+        removeSideBar();
+
+        loadAllUserTasks();
+    }
+
+    async function editNote(event) {
+        event.preventDefault();
+
+        try {
+
+
 
         } catch (error) {
 
@@ -303,7 +319,7 @@ function mainFunction() {
         let editButton = aside.querySelector("button");
         editButton.textContent = "Edit";
         editButton.classList.add("editBtn");
-        //editButton.addEventListener("click", editNote);
+        editButton.addEventListener("click", editNote);
         btnsContainer.appendChild(editButton);
 
         let form = aside.querySelector("form");
@@ -321,6 +337,8 @@ function mainFunction() {
 
         titleInput.value = event.target.querySelector("h2").textContent;
         descriptionInput.value = event.target.querySelector("p").textContent;
+
+        sessionStorage.setItem("currentNoteId", event.target.getAttribute("data-id"));
 
     }
 
