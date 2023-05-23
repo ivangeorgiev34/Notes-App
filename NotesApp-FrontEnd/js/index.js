@@ -63,24 +63,24 @@ function mainFunction() {
     function addNoteSidebar(event) {
 
         //check if there is another sidebar opened already
+        if (document.querySelector("body aside") !== null) {
 
-        if (document.querySelector("body aside") === null) {
-
-            //add aside between header and main
-            let aside = createAsideElement();
-
-            let body = document.querySelector("body");
-
-            let main = document.querySelector("main");
-
-            body.insertBefore(aside, main);
-
-            let addButton = aside.querySelector("button");
-            addButton.textContent = "Add";
-            addButton.classList.add("addBtn");
-            addButton.addEventListener("click", addNote);
-
+            removeSideBar();
         }
+
+        //add aside between header and main
+        let aside = createAsideElement();
+
+        let body = document.querySelector("body");
+
+        let main = document.querySelector("main");
+
+        body.insertBefore(aside, main);
+
+        let addButton = aside.querySelector("button");
+        addButton.textContent = "Add";
+        addButton.classList.add("addBtn");
+        addButton.addEventListener("click", addNote);
 
     }
 
@@ -119,6 +119,20 @@ function mainFunction() {
 
         }
 
+    }
+
+    async function deleteNote(event) {
+        event.preventDefault();
+
+        try {
+
+
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
     }
 
     function removeSideBar() {
@@ -245,6 +259,8 @@ function mainFunction() {
                 descriptionParagraph.textContent = description;
                 noteContainer.appendChild(descriptionParagraph);
 
+                noteContainer.addEventListener("click", noteSidebar)
+
                 notesSection.appendChild(noteContainer);
 
             }
@@ -256,6 +272,49 @@ function mainFunction() {
             console.error(error);
 
         }
+    }
+
+    async function noteSidebar(event) {
+
+        if (document.querySelector("body aside") !== null) {
+
+            removeSideBar();
+        }
+
+        //add aside between header and main
+        let aside = createAsideElement();
+
+        let body = document.querySelector("body");
+
+        let main = document.querySelector("main");
+
+        body.insertBefore(aside, main);
+
+        let btnsContainer = document.createElement("div");
+        btnsContainer.classList.add("btnsContainer");
+
+        let editButton = aside.querySelector("button");
+        editButton.textContent = "Edit";
+        editButton.classList.add("editBtn");
+        //editButton.addEventListener("click", editNote);
+        btnsContainer.appendChild(editButton);
+
+        let form = aside.querySelector("form");
+
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("deleteBtn");
+        deleteButton.addEventListener("click", deleteNote);
+        btnsContainer.appendChild(deleteButton);
+
+        form.appendChild(btnsContainer);
+
+        let titleInput = form.querySelector(".title-container > #title");
+        let descriptionInput = form.querySelector(".description-container > #description");
+
+        titleInput.value = event.target.querySelector("h2").textContent;
+        descriptionInput.value = event.target.querySelector("p").textContent;
+
     }
 
     function logOut(event) {
