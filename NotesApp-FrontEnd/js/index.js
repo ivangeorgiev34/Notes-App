@@ -108,10 +108,19 @@ function mainFunction() {
 
             let addNoteResponse = await fetch(`${BASE_URL}/add/${sessionStorage.getItem("userId")}`, postMethod);
 
+            if (addNoteResponse["status"] === 400) {
 
-            loadAllUserTasks();
+                let addNoteResponseJson = await addNoteResponse.json();
 
-            removeSideBar();
+                printErrors(addNoteResponseJson);
+
+            } else {
+
+                loadAllUserTasks();
+
+                removeSideBar();
+
+            }
 
         } catch (error) {
 
@@ -119,6 +128,44 @@ function mainFunction() {
 
         }
 
+    }
+
+    function printErrors(responseJson) {
+
+        let errorsContainer = document.querySelector(".sidebar .errors-container");
+
+        errorsContainer.innerHTML = null;
+
+        if (responseJson["errors"].hasOwnProperty("Title")) {
+
+            //title errors
+            for (const titleError of responseJson["errors"]["Title"]) {
+
+                let span = document.createElement("span");
+
+                span.textContent = titleError;
+
+                span.classList.add("error");
+
+                errorsContainer.appendChild(span);
+
+            }
+        }
+        if (responseJson["errors"].hasOwnProperty("Description")) {
+
+            //description errors
+            for (const descriptionError of responseJson["errors"]["Description"]) {
+
+                let span = document.createElement("span");
+
+                span.textContent = descriptionError;
+
+                span.classList.add("error");
+
+                errorsContainer.appendChild(span);
+
+            }
+        }
     }
 
     async function deleteNote(event) {
@@ -235,6 +282,7 @@ function mainFunction() {
 
         let errorsContainer = document.createElement("div");
         errorsContainer.classList.add("errors-container");
+        form.appendChild(errorsContainer);
 
         //submit button
 
