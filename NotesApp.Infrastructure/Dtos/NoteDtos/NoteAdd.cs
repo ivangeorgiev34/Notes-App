@@ -11,10 +11,10 @@ namespace NotesApp.Infrastructure.Dtos.NoteDtos
     public class NoteAdd
     {
 
-        [Required]
+        [Required(ErrorMessage ="Title is required!")]
         public string Title { get; set; } = null!;
 
-        [Required]
+        [Required(ErrorMessage = "Description is required!")]
         public string Description { get; set; } = null!;
 
 
