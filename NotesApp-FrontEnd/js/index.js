@@ -213,11 +213,19 @@ function mainFunction() {
 
             let patchMethodResponse = await fetch(`${BASE_URL}/edit/${sessionStorage.getItem("userId")}/${sessionStorage.getItem("currentNoteId")}`, patchMethod);
 
-            let responseJson = await patchMethodResponse.json();
+            if (patchMethodResponse["status"] === 400) {
 
-            removeSideBar();
+                let patchMethodResponseJson = await patchMethodResponse.json();
 
-            loadAllUserTasks();
+                printErrors(patchMethodResponseJson);
+
+            } else {
+
+                removeSideBar();
+
+                loadAllUserTasks();
+
+            }
 
         } catch (error) {
 
