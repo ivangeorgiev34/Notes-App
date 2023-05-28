@@ -1,0 +1,32 @@
+.register-form{
+    border: 1px solid rgb(98, 98, 98);
+    width: 30%;
+    height: 620px;
+    margin:0;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.register-form input{
+    height: 25px;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.register-form input,.register-form label{
+    display: block;
+}
+
+.registerBtn{
+    all: unset;
+    background-color: rgb(0, 164, 0);
+    color: white;
+    border: 1px solid black;
+    padding: 10px 20px;
+}

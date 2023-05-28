@@ -5,7 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/register.css" />
     <title>NotesApp</title>
   </head>
-  <body></body>
+  <body>
+    <form class="register-form">
+      <h1>Register</h1>
+      <div class="form-email-container">
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email" placeholder="Email..." />
+      </div>
+      <div class="form-username-container">
+        <label for="username">Username:</label>
+        <input
+          id="username"
+          type="username"
+          name="username"
+          placeholder="Username..."
+        />
+      </div>
+      <div class="form-password-container">
+        <label for="password">Password:</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Password..."
+        />
+      </div>
+      <div class="form-password-repeat-container">
+        <label for="password-repeat">Repeat Password:</label>
+        <input
+          id="password-repeat"
+          type="password"
+          name="password-repeat"
+          placeholder="Repeat password..."
+        />
+      </div>
+      <div class="errors-containter"></div>
+      <button class="registerBtn">Register</button>
+    </form>
+    <script src="js/register.js"></script>
+  </body>
 </html>
