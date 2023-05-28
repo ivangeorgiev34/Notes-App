@@ -3,7 +3,6 @@ Notes-App is an application built with ASP.NET Core Web API, HTML, CSS, and vani
 # Table of contents
 - [How the system works](#howTheSystemWorks)
 - [Technologies and Tools](#technologiesAndTools)
-- [Database design](#databaseDesign)
 ## <a id="howTheSystemWorks" name="howTheSystemWorks">How the system works</a>
 ### Registering and logging in
 - First you need to register in the platform by creating your account
