@@ -18,4 +18,3 @@ Notes-App is an application built with ASP.NET Core Web API, HTML, CSS, and vani
 - Javascript
 - HTML
 - CSS
-## <a id="databaseDesign" name="databaseDesign">Database Diagram</a>
