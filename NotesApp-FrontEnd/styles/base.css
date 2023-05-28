@@ -5,3 +5,9 @@ html{
 body{
     margin:0;
 }
+
+.error{
+    text-align: center;
+    display: block;
+    color: red;
+}
